@@ -1,0 +1,2 @@
+"""Time tracking application package."""
+

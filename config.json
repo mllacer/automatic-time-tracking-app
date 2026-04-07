@@ -1,0 +1,8 @@
+{
+  "base_dir": ".",
+  "database_path": "time-tracking.db",
+  "log_path": "logs/app.log",
+  "auto_start_enabled": true,
+  "log_level": "INFO"
+}
+

@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.venv/
+build/
+dist/
+logs/
+*.pyc
+*.pyo
+*.pyd
+time-tracking.db
+time-tracking-*.xlsx
+
