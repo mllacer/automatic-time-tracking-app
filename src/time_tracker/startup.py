@@ -5,13 +5,12 @@ import os
 import sys
 from pathlib import Path
 
-import win32com.client
-
-
 SHORTCUT_NAME = "TimeTracker.lnk"
 
 
 def ensure_startup_shortcut(base_dir: Path, logger: logging.Logger | None = None) -> Path:
+    import win32com.client
+
     startup_dir = Path(os.environ["APPDATA"]) / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup"
     startup_dir.mkdir(parents=True, exist_ok=True)
     shortcut_path = startup_dir / SHORTCUT_NAME
@@ -31,7 +30,7 @@ def ensure_startup_shortcut(base_dir: Path, logger: logging.Logger | None = None
     return shortcut_path
 
 
-def resolve_launch_command() -> tuple[str, str]:
+def resolve_launch_command(module_path: Path | None = None) -> tuple[str, str]:
     if getattr(sys, "frozen", False):
         return str(Path(sys.executable).resolve()), ""
 
@@ -41,7 +40,9 @@ def resolve_launch_command() -> tuple[str, str]:
         if candidate.exists():
             interpreter = candidate
 
-    launcher = Path(__file__).resolve().parents[2] / "run_time_tracker.pyw"
-    arguments = f'"{launcher}"'
+    launcher = (module_path or Path(__file__)).resolve().parents[2] / "run_time_tracker.pyw"
+    if launcher.exists():
+        arguments = f'"{launcher}"'
+    else:
+        arguments = "-m time_tracker"
     return str(interpreter), arguments
-

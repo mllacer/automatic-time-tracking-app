@@ -36,7 +36,8 @@ def load_config() -> AppConfig:
         config_path = Path.cwd() / "config.json"
         _write_default_config(config_path)
 
-    base_dir = _resolve_path(raw["base_dir"], Path.cwd())
+    config_anchor = config_path.parent
+    base_dir = _resolve_path(raw["base_dir"], config_anchor)
     database_path = _resolve_path(raw["database_path"], base_dir)
     log_path = _resolve_path(raw["log_path"], base_dir)
 
@@ -74,4 +75,3 @@ def _write_default_config(config_path: Path) -> None:
     with config_path.open("w", encoding="utf-8") as handle:
         json.dump(DEFAULT_CONFIG, handle, indent=2)
         handle.write("\n")
-

@@ -1,6 +1,7 @@
 __pycache__/
 .pytest_cache/
 .venv/
+*.egg-info/
 build/
 dist/
 logs/
@@ -9,4 +10,3 @@ logs/
 *.pyd
 time-tracking.db
 time-tracking-*.xlsx
-
