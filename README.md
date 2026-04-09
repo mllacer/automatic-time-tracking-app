@@ -1,6 +1,6 @@
-# Automatic Time Tracking App
+# Time Tracking Collector
 
-Automatic Time Tracking App is a Windows background utility that listens for workstation lock, unlock, suspend, resume, logoff, and shutdown events, stores the raw event stream in SQLite, and exports computed work sessions to yearly Excel workbooks.
+Time Tracking Collector is a Windows background utility that listens for workstation lock, unlock, suspend, resume, logoff, and shutdown events, stores the raw event stream in SQLite, and exports computed work sessions to yearly Excel workbooks.
 
 ## What the application does
 
